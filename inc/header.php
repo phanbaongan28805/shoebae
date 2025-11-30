@@ -34,7 +34,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siz Sneaker</title>
+    <title>Shoebae</title>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -65,7 +65,7 @@
     <header>
         <!-- mobile menu -->
         <div class="mobile-menu bg-second">
-            <a href="index.php" class="mb-logo">Siz Sneaker</a>
+            <a href="index.php" class="mb-logo">Shoebae</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -94,7 +94,7 @@
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="index.php" class="logo"> Siz Sneaker</a>
+                    <a href="index.php" class="logo"> Shoebae</a>
                     <form action="search.php" method="GET">
                         <div class="search">
                             <input type="text" name="search" required
