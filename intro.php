@@ -71,7 +71,7 @@
     <header>
         <!-- mobile menu -->
         <div class="mobile-menu bg-second">
-            <a href="index.php" class="mb-logo">Siz Sneaker</a>
+            <a href="index.php" class="mb-logo">Shoebae</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -100,7 +100,7 @@
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="index.php" class="logo"> Siz Sneaker</a>
+                    <a href="index.php" class="logo"> Shoebae</a>
                     <form action="search.php" method="GET">
                         <div class="search">
                             <input type="text" name="search" required
@@ -296,7 +296,7 @@
                         Bạn đang cần tìm một đôi giày thể thao sneaker đẹp và hợp thời trang và đang hot Trends
                         đến từ
                         các thương hiệu lớn nhưng lại không đủ hầu bao để sắm được hàng chính hãng? Hãy đến với
-                        Siz Seaker – nơi bạn có thể trao lòng tin, cam đoan 100% các dòng giày kinh doanh đều là
+                        Shoebae – nơi bạn có thể trao lòng tin, cam đoan 100% các dòng giày kinh doanh đều là
                         chính
                         hãng.
                     </div>
@@ -312,8 +312,8 @@
                         <h3> Các chính sách ưu đãi</h3>
                     </div>
                     <div class="blog-preview-2">
-                        “Khách hàng thân thiết Siz Seaker ” là chương trình chăm sóc khách hàng của Siz Seaker , với
-                        các ưu đãi đặc biệt dành riêng cho các khách hàng của nhà Siz Seaker , Siz Seaker luôn mong
+                        “Khách hàng thân thiết Shoebae ” là chương trình chăm sóc khách hàng của Shoebae , với
+                        các ưu đãi đặc biệt dành riêng cho các khách hàng của nhà Shoebae , Shoebae luôn mong
                         muốn
                         được
                         đồng
@@ -335,7 +335,7 @@
                         Bạn đang cần tìm một đôi giày thể thao sneaker đẹp và hợp thời trang và đang hot Trends
                         đến từ
                         các thương hiệu lớn nhưng lại không đủ hầu bao để sắm được hàng chính hãng? Hãy đến với
-                        Siz Seaker – nơi bạn có thể trao lòng tin, cam đoan 100% các dòng giày kinh doanh đều là
+                        Shoebae – nơi bạn có thể trao lòng tin, cam đoan 100% các dòng giày kinh doanh đều là
                         chính
                         hãng.
                     </div>
@@ -711,7 +711,7 @@ $(document).ready(function(){
                 <div class="col-3 col-md-6 col-sm-12">
                     <div class="contact">
                         <h3 class="logo" style="margin-left:40px;">
-                            Siz Sneaker
+                            Shoebae
                         </h3>
                         <ul class="contact-socials">
                             <li>

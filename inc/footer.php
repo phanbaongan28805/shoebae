@@ -47,7 +47,7 @@
                 <div class="col-3 col-md-6 col-sm-12">
                     <div class="contact">
                         <h3 class="logo" style="margin-left:40px;">
-                            Siz Sneaker
+                            Shoebae
                         </h3>
                         <ul class="contact-socials">
                             <li>
