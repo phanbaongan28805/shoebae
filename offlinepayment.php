@@ -168,7 +168,7 @@
 		    			while ($result = $get_customers->fetch_assoc()) {
 		    			
 		    		 ?>
-                            <td> <input id="name" type="text" readonly="readonly" value="Siz Sneaker"
+                            <td> <input id="name" type="text" readonly="readonly" value="Shoebae"
                                     style=" color:#fff;border: #fff;margin-top:-1300px; z-index: 100;">
                                 <input id="email" readonly="readonly" type="text"
                                     value="<?php echo $result['email']; ?>"

@@ -38,7 +38,7 @@
                             <label>Tên</label>
                         </td>
                         <td>
-                            <input id="name" type="text" value="Siz Sneaker" placeholder="Enter Name"
+                            <input id="name" type="text" value="Shoebae" placeholder="Enter Name"
                                 style="width: 70%; ">
                         </td>
                     </tr>
