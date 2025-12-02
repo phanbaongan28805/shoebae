@@ -50,10 +50,15 @@
         <div class="grid_12">
             <ul class="nav main">
                 <li class="ic-charts"><a href="index.php"><span>Dashboard</span></a> </li>
-               
+               <?php 
+                    $role = Session::get('role');
+                    // Banner menu - chỉ admin
+                    if($role === 'admin' || $role === 'sale') {
+                ?>
                 <li class="ic-form-style"><a href="contact.php"><span>Phản hồi từ khách hàng</span></a></li>
                 <!-- <li class="ic-typography"><a href="changepassword.php"><span>Thay đổi mật khẩu</span></a></li> -->
                 <li class="ic-dashboard"><a href="info.php"><span>Đơn Hàng</span></a></li>
+                <?php } ?>
                 <li class="ic-charts"><a href="../index.php" target="_blank"><span>Website</span></a></li>
                 <?php 
                                 if(isset($_GET['action']) && $_GET['action']=='logout'){

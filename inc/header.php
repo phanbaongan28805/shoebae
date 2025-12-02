@@ -81,10 +81,10 @@
                 <div class="top-header container">
                     <ul class="devided">
                         <li>
-                            <a href="tel:0383356646">0383.356.646</a>
+                            <a href="tel:0339004194">0339.004.194</a>
                         </li>
                         <li>
-                            <a href="contact.php">sizsneaker@mail.com</a>
+                            <a href="contact.php">shoebae@mail.com</a>
                         </li>
                     </ul>
 
@@ -123,7 +123,18 @@
 								 } 
 								
 								 ?>
-                                    ]</p>
+                                    ]                   <?php 
+                                        $login_check = Session::get('customer_login');
+                                        if ($login_check) {
+                                            $customer_id = Session::get('customer_id');
+                                            $get_customers = $cs->show_customers($customer_id);
+                                            if ($get_customers) {
+                                                $result = $get_customers->fetch_assoc();
+                                                echo '<span style="font-weight:500;color:#222;font-size:17px;line-height:1;">'.htmlspecialchars($result['name']).'</span>';
+                                            }
+                                        }
+                                    ?></p>
+                                    
 
                             </a>
                             <ul class="dropdown-content">

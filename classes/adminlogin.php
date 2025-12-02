@@ -1,7 +1,7 @@
 <?php
 	$filepath = realpath(dirname(__FILE__));
-	include ($filepath.'/../lib/session.php');
-	Session::checkLogin(); // gọi hàm check login để ktra session
+	// include ($filepath.'/../lib/session.php');
+	// Session::checkLogin(); // gọi hàm check login để ktra session
 	include_once($filepath.'/../lib/database.php');
 	include_once($filepath.'/../helpers/format.php');
 ?>
@@ -42,7 +42,26 @@
 					Session::set('adminId', $value['adminId']);
 					Session::set('adminUser', $value['adminUser']);
 					Session::set('adminName', $value['adminName']);
-					header("Location:index.php");
+					Session::set('role', $value['role']);
+					header("Location:admin/index.php");
+					// // KIỂM TRA QUYỀN ADMIN / SALE
+					// // ===============================
+					// if($value['role'] === 'admin'){
+					// 	header("Location: admin/index.php");
+					// 	exit();
+					// } 
+					// else if($value['role'] === 'sale'){
+					// 	header("Location: admin/sale.php"); 
+					// 	exit();
+					// } 
+					// else if($value['role'] === 'bunker')
+					// 	{
+					// 	header("Location: admin/bunker.php"); 
+					// 	exit();
+					// 	}
+					// else {
+					// 	return "Tài khoản không có quyền truy cập hệ thống";
+					// }
 				}else {
 					$alert = "User and Pass not match";
 					return $alert;

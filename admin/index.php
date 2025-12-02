@@ -84,7 +84,12 @@ span a {
 <div class="grid_10">
     <br>
     <div class="box round first grid">
-        <h2> Dashboard</h2>
+        <h2><?php 
+                    $role = Session::get('role');
+                    // Banner menu - chỉ admin
+                    echo $role
+                     
+                ?> </h2>
         <div class="container">
             <?php 
                      $get_customer = $cs-> show_sldonhang();
