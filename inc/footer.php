@@ -1,23 +1,22 @@
     <!-- footer -->
-    <footer class="bg-second">
+    <footer class="bg-second" style="background:linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);margin-top:60px;padding:60px 0 20px;border-top:3px solid #FF6600;">
         <div class="container">
             <div class="row">
-                <div class="col-3 col-md-6 col-sm-12">
-
+                <div class="col-3 col-md-6 col-sm-12" style="padding:20px;">
                     <ul class="menu">
                         <li>
-                            <h3>Shoes Collection</h3>
+                            <h3 style="color:#FF6600;font-size:18px;font-weight:bold;margin-bottom:15px;border-bottom:2px solid #FF6600;padding-bottom:10px;">Shoes Collection</h3>
                         </li>
-                        <li><a href="nike.php?catid=18">Nike Shoes</a></li>
-                        <li><a href="adidas.php?catid=19">Adidas Shoes</a></li>
-                        <li><a href="converse.php?catid=20">Converse Shoes</a></li>
-                        <li><a href="vans.php?catid=21">Vans Shoes</a></li>
+                        <li style="margin-bottom:10px;"><a href="nike.php?catid=18" style="color:#555;text-decoration:none;transition:0.3s;display:inline-block;" onmouseover="this.style.color='#FF6600'" onmouseout="this.style.color='#555'">➤ Nike Shoes</a></li>
+                        <li style="margin-bottom:10px;"><a href="adidas.php?catid=19" style="color:#555;text-decoration:none;transition:0.3s;display:inline-block;" onmouseover="this.style.color='#FF6600'" onmouseout="this.style.color='#555'">➤ Adidas Shoes</a></li>
+                        <li style="margin-bottom:10px;"><a href="converse.php?catid=20" style="color:#555;text-decoration:none;transition:0.3s;display:inline-block;" onmouseover="this.style.color='#FF6600'" onmouseout="this.style.color='#555'">➤ Converse Shoes</a></li>
+                        <li style="margin-bottom:10px;"><a href="vans.php?catid=21" style="color:#555;text-decoration:none;transition:0.3s;display:inline-block;" onmouseover="this.style.color='#FF6600'" onmouseout="this.style.color='#555'">➤ Vans Shoes</a></li>
                     </ul>
                 </div>
-                <div class="col-3 col-md-6 col-sm-12">
+                <div class="col-3 col-md-6 col-sm-12" style="padding:20px;">
                     <ul class="menu">
                         <li>
-                            <h3>Danh Mục</h3>
+                            <h3 style="color:#FF6600;font-size:18px;font-weight:bold;margin-bottom:15px;border-bottom:2px solid #FF6600;padding-bottom:10px;">Danh Mục</h3>
                         </li>
                         <?php 
 						$getall_category = $cat->show_category_fontend();
@@ -26,8 +25,8 @@
 									
 								
 						 ?>
-                        <li><a
-                                href="productbycat.php?catid=<?php echo $result_allcat['catId'] ?>"><?php echo $result_allcat['catName'] ?></a>
+                        <li style="margin-bottom:10px;"><a
+                                href="productbycat.php?catid=<?php echo $result_allcat['catId'] ?>" style="color:#555;text-decoration:none;transition:0.3s;display:inline-block;" onmouseover="this.style.color='#FF6600'" onmouseout="this.style.color='#555'">➤ <?php echo $result_allcat['catName'] ?></a>
                         </li>
                         <?php 
 				      }
@@ -36,37 +35,29 @@
                     </ul>
 
                 </div>
-                <div class="col-3 col-md-6 col-sm-12">
-                    <h3 class="footer-head">support</h3>
-                    <iframe
-                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSiz-Sneaker-101693367890348%2F&tabs=timeline&width=300&height=195&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=213447797446471"
-                        width="100%" 0 height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                        allowfullscreen="true"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-                <div class="col-3 col-md-6 col-sm-12">
+                <div class="col-3 col-md-6 col-sm-12" style="padding:20px;">
                     <div class="contact">
-                        <h3 class="logo" style="margin-left:40px;">
-                            Shoebae
+                        <h3 class="logo" style="color:#FF6600;font-size:28px;font-weight:bold;margin-bottom:20px;text-align:center;">
+                            🔥 Shoebae 🔥
                         </h3>
-                        <ul class="contact-socials">
+                        <ul class="contact-socials" style="display:flex;justify-content:center;gap:20px;margin-bottom:30px;list-style:none;padding:0;">
                             <li>
-                                <a href="https://www.facebook.com/Siz-Sneaker-101693367890348" target="_blank">
+                                <a href="https://www.facebook.com/Siz-Sneaker-101693367890348" target="_blank" style="display:flex;align-items:center;justify-content:center;width:45px;height:45px;background:#FF6600;border-radius:50%;transition:0.3s;color:white;font-size:24px;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 0 15px rgba(255,102,0,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
                                     <i class='bx bxl-facebook-circle'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/trg_siu/" target="_blank">
+                                <a href="https://www.instagram.com/trg_siu/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:45px;height:45px;background:#FF6600;border-radius:50%;transition:0.3s;color:white;font-size:24px;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 0 15px rgba(255,102,0,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
                                     <i class='bx bxl-instagram-alt'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.youtube.com/channel/UCmaQE0F74O7UNOVgva_6KVw" target="_blank">
+                                <a href="https://www.youtube.com/channel/UCmaQE0F74O7UNOVgva_6KVw" target="_blank" style="display:flex;align-items:center;justify-content:center;width:45px;height:45px;background:#FF6600;border-radius:50%;transition:0.3s;color:white;font-size:24px;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 0 15px rgba(255,102,0,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
                                     <i class='bx bxl-youtube'></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/?lang=vi" target="_blank">
+                                <a href="https://twitter.com/?lang=vi" target="_blank" style="display:flex;align-items:center;justify-content:center;width:45px;height:45px;background:#FF6600;border-radius:50%;transition:0.3s;color:white;font-size:24px;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 0 15px rgba(255,102,0,0.6)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
                                     <i class='bx bxl-twitter'></i>
                                 </a>
                             </li>
@@ -74,18 +65,22 @@
                     </div>
 
                     <div class="subscribe">
+                        <h4 style="color:#FF6600;text-align:center;margin-bottom:15px;font-weight:bold;">Đăng ký nhận khuyến mãi</h4>
                         <?php 
     		if (isset($insertMail)) {
     			echo $insertMail;
     		}
     		 ?>
-                        <form action="index.php" method="post" enctype="multipart/form-data">
-                            <input type="email" name="email" placeholder="Nhập Địa Chỉ Email">
-                            <button type="submit" name="submit">Đăng kí ngay</button>
+                        <form action="index.php" method="post" enctype="multipart/form-data" style="display:flex;gap:8px;">
+                            <input type="email" name="email" placeholder="Nhập Email..." style="flex:1;padding:10px;border:none;border-radius:5px;font-size:14px;box-sizing:border-box;">
+                            <button type="submit" name="submit" style="padding:10px 20px;background:#FF6600;color:white;border:none;border-radius:5px;font-weight:bold;cursor:pointer;transition:0.3s;">Đăng ký</button>
                         </form>
 
                     </div>
                 </div>
+            </div>
+            <div style="border-top:1px solid #ddd;margin-top:40px;padding-top:20px;text-align:center;color:#777;font-size:14px;">
+                <p>&copy; 2024 Shoebae. All rights reserved. | Designed with ❤️ by Shoebae Team</p>
             </div>
         </div>
     </footer>

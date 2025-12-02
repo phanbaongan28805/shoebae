@@ -67,7 +67,7 @@
 					Session::set('customer_login', true);
 					Session::set('customer_id', $value['id']);
 					Session::set('customer_name', $value['name']);
-					header('Location:order.php');
+					header('Location:index.php');
 				}else {
 					$alert = "<span class='error'>Email hoặc Mật khẩu không đúng!</span>";
 					return $alert;
