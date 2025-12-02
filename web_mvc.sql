@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 20, 2021 lúc 07:20 AM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 8.0.3
+-- Thời gian đã tạo: Th12 02, 2025 lúc 06:37 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,19 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_admin` (
   `adminId` int(11) NOT NULL,
-  `adminName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `adminEmail` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `adminUser` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `adminPass` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `level` int(30) NOT NULL
+  `adminName` varchar(255) NOT NULL,
+  `adminEmail` varchar(150) NOT NULL,
+  `adminUser` varchar(255) NOT NULL,
+  `adminPass` varchar(255) NOT NULL,
+  `level` int(30) NOT NULL,
+  `role` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `level`) VALUES
-(2, 'admin', 'admin@gmail.com', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 0);
+INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `level`, `role`) VALUES
+(2, 'admin', 'admin@gmail.com', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 0, 'admin'),
+(3, 'Ngaan', 'nganadmin', 'nganadmin', '123', 0, 'admin'),
+(4, 'sale', 'sale@gmail.com', 'sale', '123', 0, 'sale'),
+(5, 'bunker', 'bunker@gmail.com', 'bunker', '123', 0, 'bunker'),
+(6, 'Đặng Bá Quyết', '', 'quyet', '123', 0, 'sale');
 
 -- --------------------------------------------------------
 
@@ -51,7 +56,7 @@ INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adm
 
 CREATE TABLE `tbl_brand` (
   `brandId` int(11) NOT NULL,
-  `brandName` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `brandName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -73,12 +78,12 @@ INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
 CREATE TABLE `tbl_cart` (
   `cartId` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
-  `sId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `productName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `price` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sId` varchar(255) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
   `size` int(50) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -89,7 +94,7 @@ CREATE TABLE `tbl_cart` (
 
 CREATE TABLE `tbl_category` (
   `catId` int(11) NOT NULL,
-  `catName` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `catName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -114,7 +119,7 @@ CREATE TABLE `tbl_contact` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `mess` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_contact`
@@ -149,13 +154,13 @@ INSERT INTO `tbl_contact` (`contactId`, `name`, `email`, `phone`, `mess`) VALUES
 
 CREATE TABLE `tbl_customer` (
   `id` int(100) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `city` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `zipcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `zipcode` varchar(30) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -164,7 +169,10 @@ CREATE TABLE `tbl_customer` (
 
 INSERT INTO `tbl_customer` (`id`, `name`, `address`, `city`, `zipcode`, `phone`, `email`, `password`) VALUES
 (1, 'Trang Hán Siêu', 'Kinh Thị-Trung Sơn-Gio Linh-Quảng Trị', 'Gio Linh', '70000', '+84383356646', 'tranghansieu123@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(2, 'Trần Đình Khánh', 'Nhĩ Hạ-Gio Mỹ-Quảng Trị', 'Quảng Trị', '60000', '0384756123', 'khanh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
+(2, 'Trần Đình Khánh', 'Nhĩ Hạ-Gio Mỹ-Quảng Trị', 'Quảng Trị', '60000', '0384756123', 'khanh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+(3, 'Phan Bảo Ngân', 'Đà Nẵng', 'Đà Nẵng', 'abc', '0123456789', 'phanbaongan288@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(4, 'chí', 'Hải Châu', 'đ', 'z', '0123456789', 'chi@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(5, 'chí', 'Hải Châu', 'đ', 'z', '123456789', 'chi1@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -175,12 +183,12 @@ INSERT INTO `tbl_customer` (`id`, `name`, `address`, `city`, `zipcode`, `phone`,
 CREATE TABLE `tbl_order` (
   `id` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
-  `productName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `productName` varchar(255) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `size` int(50) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `date_order` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -192,7 +200,12 @@ CREATE TABLE `tbl_order` (
 INSERT INTO `tbl_order` (`id`, `productId`, `productName`, `customer_id`, `size`, `quantity`, `price`, `image`, `status`, `date_order`) VALUES
 (1, 84, 'Nike Jordan 1 Low', 1, 40, 2, '2600000', '47b8a08147.png', 2, '2021-12-11 12:03:22'),
 (2, 78, 'Vans Old Skool', 2, 40, 1, '1200000', '0a672cb91f.png', 1, '2021-12-11 14:26:02'),
-(3, 77, 'Vans Old Skool', 2, 35, 3, '3600000', '8f9c499b7f.png', 1, '2021-12-12 05:45:53');
+(3, 77, 'Vans Old Skool', 2, 35, 3, '3600000', '8f9c499b7f.png', 1, '2021-12-12 05:45:53'),
+(4, 50, 'Vans Vault OG Classic', 3, 38, 1, '1000000', '5ef46ceecc.png', 2, '2025-11-30 06:37:46'),
+(5, 84, 'Nike Jordan 1 Low', 3, 35, 1, '1300000', '47b8a08147.png', 0, '2025-12-01 03:42:32'),
+(6, 82, 'Adidas Forum', 3, 35, 1, '2500000', '5b2349ceaf.png', 0, '2025-12-02 16:27:59'),
+(7, 82, 'Adidas Forum', 5, 35, 1, '2500000', '5b2349ceaf.png', 2, '2025-12-02 16:30:12'),
+(8, 83, 'Nike Jordan 1 Low', 5, 35, 1, '1300000', 'cb16316366.png', 2, '2025-12-02 16:34:10');
 
 -- --------------------------------------------------------
 
@@ -202,19 +215,19 @@ INSERT INTO `tbl_order` (`id`, `productId`, `productName`, `customer_id`, `size`
 
 CREATE TABLE `tbl_product` (
   `productId` int(11) NOT NULL,
-  `productName` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `product_code` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `productQuantity` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `product_soldout` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `product_remain` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `productName` varchar(500) NOT NULL,
+  `product_code` varchar(200) NOT NULL,
+  `productQuantity` varchar(50) NOT NULL,
+  `product_soldout` varchar(50) NOT NULL DEFAULT '0',
+  `product_remain` varchar(50) NOT NULL,
   `catId` int(11) NOT NULL,
   `brandId` int(11) NOT NULL,
-  `color` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `product_desc` varchar(3000) COLLATE utf8_unicode_ci NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `product_desc` varchar(3000) NOT NULL,
   `type` int(11) NOT NULL,
   `sex` int(20) NOT NULL,
-  `price` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `price` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -227,7 +240,7 @@ INSERT INTO `tbl_product` (`productId`, `productName`, `product_code`, `productQ
 (47, 'Nike Jordan 4', '009', '40', '4', '36', 18, 15, '', '<p>Gi&agrave;y Nike Jordan 4 l&agrave; một trong những phối m&agrave;u cực kỳ hot trong series 1s n&oacute;i chung v&agrave; cũng l&agrave; những phối m&agrave;u trường kỳ với thời gian được ph&aacute;t h&agrave;nh v&agrave;o năm 1985. M&ugrave;a h&egrave; 2019, Jordan Brand đ&atilde; nhanh tay chuẩn bị ph&aacute;t h&agrave;nh ra phi&ecirc;n...</p>\r\n', 0, 0, '1400000', '28b51789d9.png'),
 (48, 'Nike Jordan 4', '007', '40', '1', '39', 18, 15, '', '<p>Gi&agrave;y Nike Jordan 4 l&agrave; một trong những phối m&agrave;u cực kỳ hot trong series 1s n&oacute;i chung v&agrave; cũng l&agrave; những phối m&agrave;u trường kỳ với thời gian được ph&aacute;t h&agrave;nh v&agrave;o năm 1985. M&ugrave;a h&egrave; 2019, Jordan Brand đ&atilde; nhanh tay chuẩn bị ph&aacute;t h&agrave;nh ra phi&ecirc;n...</p>\r\n', 0, 0, '1500000', 'c8fd06373e.png'),
 (49, 'Vans Vault Old Skool', '005', '40', '3', '37', 21, 18, '', '<p><span>VANS</span><span>&nbsp;được cộng đồng thể thao biết đến như một thương hiệu thời trang chuy&ecirc;n về gi&agrave;y d&agrave;nh cho c&aacute;c bộ m&ocirc;n nghệ thuật đường phố, nổi bật l&agrave; trượt v&aacute;n.&nbsp;</span></p>', 1, 0, '1000000', '59656f0dd6.png'),
-(50, 'Vans Vault OG Classic', '003', '40', '12', '28', 21, 18, '', '<p><span>VANS</span><span>&nbsp;được cộng đồng thể thao biết đến như một thương hiệu thời trang chuy&ecirc;n về gi&agrave;y d&agrave;nh cho c&aacute;c bộ m&ocirc;n nghệ thuật đường phố, nổi bật l&agrave; trượt v&aacute;n.&nbsp;</span></p>', 1, 0, '1000000', '5ef46ceecc.png'),
+(50, 'Vans Vault OG Classic', '003', '40', '13', '27', 21, 18, '', '<p><span>VANS</span><span>&nbsp;được cộng đồng thể thao biết đến như một thương hiệu thời trang chuy&ecirc;n về gi&agrave;y d&agrave;nh cho c&aacute;c bộ m&ocirc;n nghệ thuật đường phố, nổi bật l&agrave; trượt v&aacute;n.&nbsp;</span></p>', 1, 0, '1000000', '5ef46ceecc.png'),
 (51, 'Vans Vault Old Skool', '004', '40', '1', '39', 21, 18, '', '<p><span>VANS</span><span>&nbsp;được cộng đồng thể thao biết đến như một thương hiệu thời trang chuy&ecirc;n về gi&agrave;y d&agrave;nh cho c&aacute;c bộ m&ocirc;n nghệ thuật đường phố, nổi bật l&agrave; trượt v&aacute;n.&nbsp;</span></p>', 1, 0, '1000000', '4d9e3cf055.png'),
 (52, 'Vans Vault Old Skool', '002', '30', '0', '33', 21, 18, '', '<p><span>VANS</span><span>&nbsp;được cộng đồng thể thao biết đến như một thương hiệu thời trang chuy&ecirc;n về gi&agrave;y d&agrave;nh cho c&aacute;c bộ m&ocirc;n nghệ thuật đường phố, nổi bật l&agrave; trượt v&aacute;n.&nbsp;</span></p>', 1, 0, '1000000', '79bde9507e.png'),
 (53, 'Adidas Yeezy 350', '013', '30', '2', '28', 19, 17, 'Xám', '<p>H&agrave;ng loạt bản mẫu. H&agrave;ng loạt cải tiến. H&agrave;ng loạt thử nghiệm. H&atilde;y đồng h&agrave;nh c&ugrave;ng ch&uacute;ng t&ocirc;i tr&ecirc;n h&agrave;nh tr&igrave;nh t&igrave;m kiếm sự h&ograve;a hợp đỉnh cao giữa trọng lượng, sự &ecirc;m &aacute;i v&agrave; độ đ&agrave;n hồi.&nbsp;</p>\r\n', 1, 1, '1700000', 'c391401e30.png'),
@@ -249,8 +262,8 @@ INSERT INTO `tbl_product` (`productId`, `productName`, `product_code`, `productQ
 (79, 'Adidas Forum', '026', '30', '0', '30', 19, 17, 'Trắng đen xám', '<p>D&ograve;ng gi&agrave;y adidas Forum vẫn lu&ocirc;n thống trị s&acirc;n b&oacute;ng rổ cũng như đường phố, nay trở lại với phi&ecirc;n bản cổ lửng gi&uacute;p đưa c&aacute;c chuyển động của bạn l&ecirc;n một tầm cao mới. Cho đ&ocirc;i ch&acirc;n phong c&aacute;ch kh&ocirc;ng thể h&ograve;a lẫn c&ugrave;ng chất liệu da phủ sang trọng v&agrave; thể hiện đẳng cấp.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 0, 0, '2500000', 'fd812f5201.png'),
 (80, 'Adidas Forum', '027', '30', '2', '30', 19, 17, 'Trắng xanh', '<p>D&ograve;ng gi&agrave;y adidas Forum vẫn lu&ocirc;n thống trị s&acirc;n b&oacute;ng rổ cũng như đường phố, nay trở lại với phi&ecirc;n bản cổ lửng gi&uacute;p đưa c&aacute;c chuyển động của bạn l&ecirc;n một tầm cao mới. Cho đ&ocirc;i ch&acirc;n phong c&aacute;ch kh&ocirc;ng thể h&ograve;a lẫn c&ugrave;ng chất liệu da phủ sang trọng v&agrave; thể hiện đẳng cấp.</p>\r\n', 0, 0, '2500000', '7dd2d6e19e.png'),
 (81, 'Adidas Forum', '028', '30', '2', '28', 19, 17, 'Trắng xanh', '<p>D&ograve;ng gi&agrave;y adidas Forum vẫn lu&ocirc;n thống trị s&acirc;n b&oacute;ng rổ cũng như đường phố, nay trở lại với phi&ecirc;n bản cổ lửng gi&uacute;p đưa c&aacute;c chuyển động của bạn l&ecirc;n một tầm cao mới. Cho đ&ocirc;i ch&acirc;n phong c&aacute;ch kh&ocirc;ng thể h&ograve;a lẫn c&ugrave;ng chất liệu da phủ sang trọng v&agrave; thể hiện đẳng cấp.</p>\r\n', 0, 0, '2500000', '55980ee264.png'),
-(82, 'Adidas Forum', '029', '30', '0', '30', 19, 17, 'Trắng cam', '<p>D&ograve;ng gi&agrave;y<strong> Adidas Forum</strong> vẫn lu&ocirc;n thống trị s&acirc;n b&oacute;ng rổ cũng như đường phố, nay trở lại với phi&ecirc;n bản cổ lửng gi&uacute;p đưa c&aacute;c chuyển động của bạn l&ecirc;n một tầm cao mới. Cho đ&ocirc;i ch&acirc;n phong c&aacute;ch kh&ocirc;ng thể h&ograve;a lẫn c&ugrave;ng chất liệu da phủ sang trọng v&agrave; thể hiện đẳng cấp.</p>\r\n', 0, 0, '2500000', '5b2349ceaf.png'),
-(83, 'Nike Jordan 1 Low', '030', '30', '0', '30', 18, 15, 'Đỏ trắng', '<p>Nike Air Jordan 1 Low l&agrave; một phi&ecirc;n bản cổ thấp của mẫu gi&agrave;y nổi tiếng Air&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1/\">Jordan 1</a>, được ph&aacute;t h&agrave;nh hầu như tất cả c&aacute;c m&ugrave;a trong năm với rất nhiều phối m&agrave;u đa dạng. Sở hữu một mức gi&aacute; mềm hơn rất nhiều so với một phi&ecirc;n bản&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1-high/\">Jordan 1 High</a>&nbsp;hoặc&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1-mid/\">Jordan 1 Mid</a>, Air Jordan 1 cổ Low đang thực sự trở th&agrave;nh một cơn sốt trong thị trường Sneaker Việt Nam.</p>\r\n', 1, 1, '1300000', 'cb16316366.png'),
+(82, 'Adidas Forum', '029', '30', '1', '29', 19, 17, 'Trắng cam', '<p>D&ograve;ng gi&agrave;y<strong> Adidas Forum</strong> vẫn lu&ocirc;n thống trị s&acirc;n b&oacute;ng rổ cũng như đường phố, nay trở lại với phi&ecirc;n bản cổ lửng gi&uacute;p đưa c&aacute;c chuyển động của bạn l&ecirc;n một tầm cao mới. Cho đ&ocirc;i ch&acirc;n phong c&aacute;ch kh&ocirc;ng thể h&ograve;a lẫn c&ugrave;ng chất liệu da phủ sang trọng v&agrave; thể hiện đẳng cấp.</p>\r\n', 0, 0, '2500000', '5b2349ceaf.png'),
+(83, 'Nike Jordan 1 Low', '030', '30', '1', '29', 18, 15, 'Đỏ trắng', '<p>Nike Air Jordan 1 Low l&agrave; một phi&ecirc;n bản cổ thấp của mẫu gi&agrave;y nổi tiếng Air&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1/\">Jordan 1</a>, được ph&aacute;t h&agrave;nh hầu như tất cả c&aacute;c m&ugrave;a trong năm với rất nhiều phối m&agrave;u đa dạng. Sở hữu một mức gi&aacute; mềm hơn rất nhiều so với một phi&ecirc;n bản&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1-high/\">Jordan 1 High</a>&nbsp;hoặc&nbsp;<a href=\"https://sneakerdaily.vn/danh-muc-san-pham/air-jordan-1-mid/\">Jordan 1 Mid</a>, Air Jordan 1 cổ Low đang thực sự trở th&agrave;nh một cơn sốt trong thị trường Sneaker Việt Nam.</p>\r\n', 1, 1, '1300000', 'cb16316366.png'),
 (84, 'Nike Jordan 1 Low', '031', '35', '9', '26', 18, 15, 'Xanh cam', '<p>Nike Air Jordan 1 Low l&agrave; một phi&ecirc;n bản cổ thấp của mẫu gi&agrave;y nổi tiếng Air Jordan, được ph&aacute;t h&agrave;nh hầu như tất cả c&aacute;c m&ugrave;a trong năm với rất nhiều phối m&agrave;u đa dạng. Sở hữu một mức gi&aacute; mềm hơn rất nhiều so với một phi&ecirc;n bản Jordan High&nbsp;hoặc Jordan Mid, Air Jordan 1 cổ Low đang thực sự trở th&agrave;nh một cơn sốt trong thị trường Sneaker Việt Nam.</p>\r\n', 1, 1, '1300000', '47b8a08147.png'),
 (85, 'Nike Jordan 1 Low', '032', '35', '2', '33', 18, 15, 'Xanh', '<p>Nike Air Jordan 1 Low l&agrave; một phi&ecirc;n bản cổ thấp của mẫu gi&agrave;y nổi tiếng Air Jordan, được ph&aacute;t h&agrave;nh hầu như tất cả c&aacute;c m&ugrave;a trong năm với rất nhiều phối m&agrave;u đa dạng. Sở hữu một mức gi&aacute; mềm hơn rất nhiều so với một phi&ecirc;n bản Jordan High&nbsp;hoặc Jordan Mid, Air Jordan 1 cổ Low đang thực sự trở th&agrave;nh một cơn sốt trong thị trường Sneaker Việt Nam.</p>\r\n', 1, 1, '1300000', 'f1d47d5cbc.png'),
 (86, 'Nike Jordan 1 Low', '033', '30', '0', '40', 18, 15, 'Xanh', '<p>Nike Air Jordan 1 Low l&agrave; một phi&ecirc;n bản cổ thấp của mẫu gi&agrave;y nổi tiếng Air Jordan, được ph&aacute;t h&agrave;nh hầu như tất cả c&aacute;c m&ugrave;a trong năm với rất nhiều phối m&agrave;u đa dạng. Sở hữu một mức gi&aacute; mềm hơn rất nhiều so với một phi&ecirc;n bản Jordan High&nbsp;hoặc Jordan Mid, Air Jordan 1 cổ Low đang thực sự trở th&agrave;nh một cơn sốt trong thị trường Sneaker Việt Nam.</p>\r\n', 1, 1, '1300000', 'e17e387fad.png');
@@ -267,7 +280,7 @@ CREATE TABLE `tbl_review` (
   `user_rating` int(1) NOT NULL,
   `user_review` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `datetime` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_review`
@@ -286,9 +299,9 @@ INSERT INTO `tbl_review` (`review_id`, `user_name`, `user_rating`, `user_review`
 
 CREATE TABLE `tbl_slider` (
   `sliderId` int(11) NOT NULL,
-  `sliderName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `slider_mota` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `slider_image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sliderName` varchar(255) NOT NULL,
+  `slider_mota` varchar(1000) NOT NULL,
+  `slider_image` varchar(255) NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -324,7 +337,7 @@ CREATE TABLE `tbl_warehouse` (
   `id_sanpham` int(11) NOT NULL,
   `sl_nhap` varchar(50) NOT NULL,
   `sl_ngaynhap` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_warehouse`
@@ -430,7 +443,7 @@ ALTER TABLE `tbl_warehouse`
 -- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_brand`
@@ -442,7 +455,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
@@ -460,13 +473,13 @@ ALTER TABLE `tbl_contact`
 -- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
