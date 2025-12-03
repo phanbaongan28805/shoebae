@@ -1,16 +1,20 @@
 <?php
-
+session_start();
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 require_once("config.php");
 
-$vnp_TxnRef = rand(1,10000);
-$vnp_Amount = $_POST['amount'];
-$vnp_Locale = $_POST['language'];
-$vnp_BankCode = $_POST['bankCode'];
+// Use session variables set from vnpay_process.php
+$vnp_TxnRef = $_SESSION['order_code_vnpay']; // Unique order code
+$vnp_Amount = $_SESSION['amount_vnpay'];   // Total amount
+$vnp_Locale = 'vn'; // Language
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 $expire = date('YmdHis', strtotime('+15 minutes'));
+
+// Clean up session variables
+unset($_SESSION['order_code_vnpay']);
+unset($_SESSION['amount_vnpay']);
 
 $inputData = array(
     "vnp_Version" => "2.1.0",
@@ -21,16 +25,12 @@ $inputData = array(
     "vnp_CurrCode" => "VND",
     "vnp_IpAddr" => $vnp_IpAddr,
     "vnp_Locale" => $vnp_Locale,
-    "vnp_OrderInfo" => "Thanh toan GD: " . $vnp_TxnRef,
+    "vnp_OrderInfo" => "Thanh toan GD:" . $vnp_TxnRef,
     "vnp_OrderType" => "other",
     "vnp_ReturnUrl" => $vnp_Returnurl,
     "vnp_TxnRef" => $vnp_TxnRef,
     "vnp_ExpireDate" => $expire
 );
-
-if (!empty($vnp_BankCode)) {
-    $inputData['vnp_BankCode'] = $vnp_BankCode;
-}
 
 ksort($inputData);
 $query = "";

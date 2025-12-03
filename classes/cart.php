@@ -156,7 +156,32 @@
 			$get_cart_ordered = $this->db->select($query);
 			return $get_cart_ordered;
 		}
-	
+		public function get_inbox_cart()
+		{
+			$query = "SELECT * FROM tbl_order ORDER BY date_order DESC";
+			$get_inbox_cart = $this->db->select($query);
+			return $get_inbox_cart;
+		}
+		public function insertOrderVNPAY($customer_id,$order_code)
+		{
+			$sId = session_id();
+			$query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+			$get_product = $this->db->select($query);
+			if($get_product){
+				while($result = $get_product->fetch_assoc()){
+					$productid = $result['productId'];
+					$productName = $result['productName'];
+					$size = $result['size'];
+					$quantity = $result['quantity'];
+					$price = $result['price'] * $quantity;
+					$image = $result['image'];
+					$customer_id = $customer_id;
+					$query_order = "INSERT INTO tbl_order(productId,productName,size,quantity,price,image,customer_id,order_code,payment_method,status) VALUES('$productid','$productName','$size','$quantity','$price','$image','$customer_id','$order_code','VNPAY','3')";
+					$insert_order = $this->db->insert($query_order);
+				}
+				return $insert_order;
+			}
+		}
 		
 		public function shifted($id,$proid,$qty,$time,$price)
 		{
@@ -225,6 +250,13 @@
 
 			WHERE customer_id = '$id' AND date_order = '$time' AND price = '$price' ";
 
+			$result = $this->db->update($query);
+			return $result;
+		}
+		public function confirmOrderVNPAY($order_code)
+		{
+			$order_code = mysqli_real_escape_string($this->db->link, $order_code);
+			$query = "UPDATE tbl_order SET status = '0' WHERE order_code = '$order_code'";
 			$result = $this->db->update($query);
 			return $result;
 		}

@@ -385,8 +385,12 @@
                 </div>
 
                 <div class="button-group">
-                    <button class="btn-flat btn-continue"><a href="index.php">🛍️ Tiếp Tục Mua Hàng</a></button>
-                    <button onclick="sendEmail()" class="btn-flat btn-order"><a href="?orderid=order">✅ Đặt Hàng Ngay</a></button>
+                    <a href="index.php" class="btn-flat btn-continue">🛍️ Tiếp Tục Mua Hàng</a>
+                    <a href="?orderid=order" class="btn-flat btn-order" onclick="sendEmail()">💵 Thanh toán khi nhận hàng</a>
+                    <form action="vnpay_process.php" method="POST">
+                        <input type="hidden" name="amount" value="<?php echo $grandTotal ?>">
+                        <button type="submit" name="redirect" class="btn-flat btn-order" style="background-color: #005c94;">💳 Thanh toán VNPAY</button>
+                    </form>
                 </div>
             </div>
 

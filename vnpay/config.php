@@ -7,7 +7,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
  */
   
 $vnp_TmnCode = "U20E14ZM"; //Mã định danh merchant kết nối (Terminal Id)
-$vnp_HashSecret = "WXXW62HZ0XF66ZYQ4ZM89PII9XX1636Z"; //Secret key
+$vnp_HashSecret = "ARR5O1WS0JDGWEFZ3MXYLDUUJ8GHVMOB"; //Secret key
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 $vnp_Returnurl = "https://celia-saccular-gamogenetically.ngrok-free.dev/vnpay/vnpay_return.php";
 $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
